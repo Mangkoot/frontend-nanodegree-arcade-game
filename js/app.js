@@ -33,14 +33,63 @@ var Player = function(x, y, speed) {
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/char-boy.png';
+    this.width = 50;
+    this.height = 85;
+};
+/*
+Player.prototype.update = function() {
+    Player.prototype.update = function() {
+    // Prevent player from moving beyond canvas wall boundaries
+    if (this.y > 380) {
+        this.y = 380;
+    }
+
+    if (this.x > 400) {
+        this.x = 400;
+    }
+
+    if (this.x < 0) {
+        this.x = 0;
+    }
+
+    // Check for player reaching top of canvas and winning the game
+    if (this.y < 0) {
+        this.x = 200;
+        this.y = 380;
+    }
+};
+*/
+Player.prototype.update = function(dt) {
+    return this.y;
 };
 
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.image), this.x, this.y);
+};
+/*
 
+Player.prototype.handleInput = function(keyPress) {
+    switch (keyPress) {
+        case 'left':
+            this.x -= this.speed + 50;
+            break;
+        case 'up':
+            this.y -= this.speed + 30;
+            break;
+        case 'right':
+            this.x += this.speed + 50;
+            break;
+        case 'down':
+            this.y += this.speed + 30;
+            break;
+    }
+};
+*/
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+let allEnemies = [];
 
 
 // This listens for key presses and sends the keys to your
