@@ -1,3 +1,5 @@
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     this.x = x;
@@ -14,33 +16,31 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-
+ this.x += this.speed * dt;
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(this.x > 600) {
+   if(this.x > 600) {
         this.x = -100;
-    } else {
-    this.x += this.speed * dt;
-}
-};
-
-/* // when off canvas, reset position of enemy to move across again
-    if (this.x > 550) {
+    } 
+ // when off canvas, reset position of enemy to move across again
+    if (this.x > 600) {
         this.x = -100;
         this.speed = 100 + Math.floor(Math.random() * 512);
     }
 
-    // Check for collision between player and enemies
+
+    // Restart after hitting an enemy
+
     if (player.x < this.x + 60 &&
         player.x + 37 > this.x &&
         player.y < this.y + 25 &&
         30 + player.y > this.y) {
-        player.x = 200;
+        player.x = 300;
         player.y = 380;
     }
 };
-*/
+
 
 
 
@@ -115,11 +115,11 @@ Player.prototype.handleInput = function(keyDirection) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
-let enemyPosition = [70, 180, 220];
+let enemyPlacement = [50, 150, 220];
 let player = new Player(300, 360, 50);
 let enemy;
 
-enemyPosition.forEach(function(placement) {
+enemyPlacement.forEach(function(placement) {
     enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 512));
     allEnemies.push(enemy);
     });
