@@ -20,6 +20,25 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 };
 
+/* // when off canvas, reset position of enemy to move across again
+    if (this.x > 550) {
+        this.x = -100;
+        this.speed = 100 + Math.floor(Math.random() * 512);
+    }
+
+    // Check for collision between player and enemies
+    if (player.x < this.x + 60 &&
+        player.x + 37 > this.x &&
+        player.y < this.y + 25 &&
+        30 + player.y > this.y) {
+        player.x = 200;
+        player.y = 380;
+    }
+};
+*/
+
+
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -64,12 +83,13 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.image), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-/*
 
-Player.prototype.handleInput = function(keyPress) {
-    switch (keyPress) {
+// Switch: https://www.w3schools.com/js/js_switch.asp
+
+Player.prototype.handleInput = function(keyDirection) {
+    switch (keyDirection) {
         case 'left':
             this.x -= this.speed + 50;
             break;
@@ -84,12 +104,21 @@ Player.prototype.handleInput = function(keyPress) {
             break;
     }
 };
-*/
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
+let enemyPosition = [70, 180, 220];
+let player = new Player(300, 360, 50);
+let enemy;
+
+enemyPosition.forEach(function(placement) {
+    enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 512));
+    allEnemies.push(enemy);
+    });
+
 
 
 // This listens for key presses and sends the keys to your
