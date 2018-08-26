@@ -14,10 +14,15 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if(this.x > 600) {
+        this.x = -100;
+    } else {
     this.x += this.speed * dt;
+}
 };
 
 /* // when off canvas, reset position of enemy to move across again
@@ -47,7 +52,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x, y, speed) {
+let Player = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
