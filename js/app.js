@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
  //when off canvas, reset position of enemy to move across again
     if (this.x > 600) {
         this.x = -100;
-        this.speed = 100 + Math.floor(Math.random() * 400);
+        this.speed = 100 + Math.floor(Math.random() * 1000);
     }
     // Restart after hitting an enemy
     if (player.x < this.x + 60 &&
@@ -133,7 +133,7 @@ let player = new Player(400, 360, 50);
 let enemy;
 
 enemyPlacement.forEach(function(placement) {
-    enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 300));
+    enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 800));
     allEnemies.push(enemy);
     });
 
