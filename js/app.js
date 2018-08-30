@@ -1,4 +1,3 @@
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     this.x = x;
@@ -19,29 +18,28 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-   if(this.x > 600) {
+    if (this.x > 600) {
         this.x = -100;
-    } 
- // when off canvas, reset position of enemy to move across again
+    }
+ //when off canvas, reset position of enemy to move across again
     if (this.x > 600) {
         this.x = -100;
         this.speed = 100 + Math.floor(Math.random() * 400);
     }
-
-
     // Restart after hitting an enemy
-
     if (player.x < this.x + 60 &&
         player.x + 37 > this.x &&
         player.y < this.y + 25 &&
         30 + player.y > this.y) {
         player.x = 300;
         player.y = 380;
+        document.getElementById("ouch").style.display="block";
+       document.getElementById('ouch').innerHTML="OUCH!!!";
+       setTimeout(function(){
+        document.getElementById('ouch').innerHTML="";
+    }, 500); 
     }
 };
-
-
-
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -55,10 +53,10 @@ let Player = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.sprite = 'images/char-boy.png';
-    
+    this.sprite = 'images/char-boy.png';  
 };
 
+//Boundaries in the game
     let bounds = {
         x_max: 400,
         y_max : 380,
@@ -67,7 +65,7 @@ let Player = function(x, y, speed) {
     };
     
 Player.prototype.update = function() {
-
+// Switch: https://www.w3schools.com/js/js_switch.asp
     switch(this.x) {
     case this.x > bounds.x_max:
         this.x = bounds.x_max;
@@ -82,7 +80,6 @@ Player.prototype.update = function() {
         this.y = bounds.y_min;
         break;
      }
-
      if (this.x > bounds.x_max) {
         this.x = bounds.x_max;
      }
@@ -99,17 +96,17 @@ Player.prototype.update = function() {
     if (this.y < 0) {
         this.x = 400;
         this.y = 380;
+       document.getElementById("goal").style.display="block";
+       document.getElementById('goal').innerHTML="YAYYYYYY!";
+       setTimeout(function(){
+       document.getElementById('goal').innerHTML="";
+    }, 1000); 
     }
 };
-
-
-
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-// Switch: https://www.w3schools.com/js/js_switch.asp
 
 Player.prototype.handleInput = function(keyDirection) {
     switch (keyDirection) {

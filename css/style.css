@@ -2,3 +2,14 @@ body {
     text-align: center;
     background-color: cornsilk;
 }
+
+#goal {
+	/*display: none;*/
+    font-size: 3em;
+    font-weight: bold;
+}
+#ouch {
+	/*display: none;*/
+    font-size: 3em;
+    font-weight: bold;
+}
