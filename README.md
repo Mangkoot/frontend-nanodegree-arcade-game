@@ -1,10 +1,21 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+This is a part of the FrontEnd NanoDegree program at Udacity.com.
 
 
+FEND Arcade Game
+
+A Frogger Arcade Game made with JavaScript and focus on object-oriented code.
+The purpose of the game is to get to the water without hitting the bugs on the way (just like Frogger).
+
+
+How to play
+
+If you want to run the game locally, download the project files before opening the index.html file in your preferred browser (which should be Chrome :))
 You play the game by using your keyboard arrows.
 Stay clear of the bugs, and try to reach the water!
+
+
+Game Rules
+Do your best, this is just for fun!
