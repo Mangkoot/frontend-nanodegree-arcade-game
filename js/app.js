@@ -1,5 +1,4 @@
 
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     this.x = x;
@@ -26,7 +25,7 @@ Enemy.prototype.update = function(dt) {
  // when off canvas, reset position of enemy to move across again
     if (this.x > 600) {
         this.x = -100;
-        this.speed = 100 + Math.floor(Math.random() * 512);
+        this.speed = 100 + Math.floor(Math.random() * 400);
     }
 
 
@@ -57,35 +56,54 @@ let Player = function(x, y, speed) {
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/char-boy.png';
-    this.width = 50;
-    this.height = 85;
+    
 };
-/*
+
+    let bounds = {
+        x_max: 400,
+        y_max : 380,
+        x_min: 0,
+        y_min : -30    
+    };
+    
 Player.prototype.update = function() {
-    Player.prototype.update = function() {
-    // Prevent player from moving beyond canvas wall boundaries
-    if (this.y > 380) {
-        this.y = 380;
-    }
 
-    if (this.x > 400) {
-        this.x = 400;
-    }
+    switch(this.x) {
+    case this.x > bounds.x_max:
+        this.x = bounds.x_max;
+        break;
+    case this.y > bounds.y_max:
+        this.y = bounds.y_max;
+        break;
+    case this.x > bounds.x_min:
+        this.x = bounds.x_min;
+        break;
+    case this.y > bounds.y_min:
+        this.y = bounds.y_min;
+        break;
+     }
 
-    if (this.x < 0) {
-        this.x = 0;
-    }
-
-    // Check for player reaching top of canvas and winning the game
+     if (this.x > bounds.x_max) {
+        this.x = bounds.x_max;
+     }
+    if (this.x < bounds.x_min) {
+        this.x = bounds.x_min;
+     } 
+     if (this.y > bounds.y_max) {
+        this.y = bounds.y_max;
+     }
+     if (this.y < bounds.y_min) {
+        this.y = bounds.y_min;
+     }
+     //If player hits the goal he/she will restart
     if (this.y < 0) {
-        this.x = 200;
+        this.x = 400;
         this.y = 380;
     }
 };
-*/
-Player.prototype.update = function(dt) {
-    return this.y;
-};
+
+
+
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -116,11 +134,11 @@ Player.prototype.handleInput = function(keyDirection) {
 // Place the player object in a variable called player
 let allEnemies = [];
 let enemyPlacement = [50, 150, 220];
-let player = new Player(300, 360, 50);
+let player = new Player(400, 360, 50);
 let enemy;
 
 enemyPlacement.forEach(function(placement) {
-    enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 512));
+    enemy = new Enemy(0, placement, 100 + Math.floor(Math.random() * 300));
     allEnemies.push(enemy);
     });
 
@@ -138,4 +156,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
