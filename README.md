@@ -1,8 +1,8 @@
-# H1 frontend-nanodegree-arcade-game
+# Frontend-nanodegree-arcade-game
 
 This is a part of the **FrontEnd NanoDegree** program at Udacity.com.
 
-S
+
 ### FEND Arcade Game
 
 A Frogger Arcade Game made with *JavaScript* and focus on *object-oriented* code. The purpose of the game is to get to the water without hitting the bugs on the way (just like Frogger).
